@@ -72,14 +72,16 @@ export default function Hero() {
               </div>
               
               {/* Packaging element floating over the composite */}
-              <div className="absolute -bottom-10 -right-4 md:-bottom-12 md:-right-8 w-1/2 max-w-[280px] animate-float z-20">
-                <Image 
-                  src="/images/real_product.jpg" 
-                  alt="PalmFeed 30kg Packaging" 
-                  width={280}
-                  height={380}
-                  className="w-full h-auto drop-shadow-2xl filter"
-                />
+              <div className="absolute -bottom-6 -right-4 md:-bottom-8 md:-right-6 w-1/2 max-w-[280px] animate-float z-20">
+                <div className="bg-white p-2 md:p-3 rounded-2xl shadow-2xl border border-primary/10">
+                  <Image 
+                    src="/images/real_product.jpg" 
+                    alt="PalmFeed 30kg Packaging" 
+                    width={280}
+                    height={380}
+                    className="w-full h-auto rounded-xl object-contain"
+                  />
+                </div>
               </div>
             </div>
           </div>
