@@ -40,7 +40,7 @@ export default function Hero() {
           {/* LEFT COLUMN: The Scenery & Visual Asset */}
           <div className="w-full lg:w-1/2 h-[450px] relative rounded-3xl overflow-hidden shadow-lg border border-primary/5 group">
             <Image 
-              src="/images/hero_concept_1.png" 
+              src="/images/hero_concept_2.png" 
               alt="Palm plantation, cow, and product" 
               fill
               priority
