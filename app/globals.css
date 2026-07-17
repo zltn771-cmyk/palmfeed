@@ -13,12 +13,6 @@
     @apply bg-background text-primary antialiased;
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    body, a, button {
-      cursor: none !important;
-    }
-  }
-
   /* Dark mode prevention: forcing light mode colors */
   @media (prefers-color-scheme: dark) {
     body {
