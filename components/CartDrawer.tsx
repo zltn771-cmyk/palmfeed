@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { X, ShoppingBag, Trash2, MessageCircle } from "lucide-react";
 import { useCart } from "./CartContext";
 
@@ -14,14 +15,36 @@ export default function CartDrawer({
   const { cartItems, removeFromCart, cartTotal } = useCart();
   const [showCheckoutModal, setShowCheckoutModal] = useState(false);
 
-  // Form State
   const [buyerName, setBuyerName] = useState("");
   const [buyerAddress, setBuyerAddress] = useState("");
   const [buyerPhone, setBuyerPhone] = useState("");
+  const [errors, setErrors] = useState({ name: "", address: "", phone: "" });
+
+  const validateForm = () => {
+    let valid = true;
+    let newErrors = { name: "", address: "", phone: "" };
+
+    if (/\d/.test(buyerName)) {
+      newErrors.name = "Nama tidak boleh mengandung angka.";
+      valid = false;
+    }
+    if (!/^(08|\+62)/.test(buyerPhone)) {
+      newErrors.phone = "Nomor telepon harus diawali dengan 08 atau +62.";
+      valid = false;
+    }
+    if (buyerAddress.length < 10) {
+      newErrors.address = "Alamat minimal 10 karakter.";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
 
   const handleWhatsAppCheckout = (e: React.FormEvent) => {
     e.preventDefault();
     if (cartItems.length === 0) return;
+    if (!validateForm()) return;
 
     // Formatting for multiple items or just taking the first one
     // We'll format a list if there are multiple items
@@ -68,8 +91,8 @@ export default function CartDrawer({
           ) : (
             cartItems.map((item) => (
               <div key={item.id} className="flex gap-4 p-4 bg-white rounded-2xl border border-primary/10 shadow-sm relative group">
-                <div className="w-20 h-20 bg-background rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0">
-                  <img src="/images/real_product.png" alt={item.name} className="h-full object-contain" />
+                <div className="relative w-20 h-20 bg-background rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0">
+                  <Image src="/images/real_product.png" alt={item.name} fill className="object-contain p-2" sizes="80px" />
                 </div>
                 <div className="flex-1">
                   <h4 className="font-semibold text-primary text-sm mb-1 leading-tight">{item.name}</h4>
@@ -91,21 +114,24 @@ export default function CartDrawer({
         </div>
 
         {/* Footer / Checkout */}
-        {cartItems.length > 0 && (
-          <div className="p-6 bg-white border-t border-primary/10 shadow-[0_-4px_20px_rgba(0,0,0,0.02)]">
-            <div className="flex justify-between items-center mb-6">
-              <span className="text-primary/70">Subtotal:</span>
-              <span className="text-2xl font-bold text-primary">Rp {cartTotal.toLocaleString('id-ID')}</span>
-            </div>
-            <button 
-              onClick={() => setShowCheckoutModal(true)}
-              className="w-full bg-[#25D366] text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#128C7E] transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              <MessageCircle className="w-5 h-5" />
-              Checkout via WhatsApp
-            </button>
+        <div className="p-6 bg-white border-t border-primary/10 shadow-[0_-4px_20px_rgba(0,0,0,0.02)]">
+          <div className="flex justify-between items-center mb-6">
+            <span className="text-primary/70">Subtotal:</span>
+            <span className="text-2xl font-bold text-primary">Rp {cartTotal.toLocaleString('id-ID')}</span>
           </div>
-        )}
+          <button 
+            onClick={() => setShowCheckoutModal(true)}
+            disabled={cartItems.length === 0}
+            className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 ${
+              cartItems.length === 0 
+                ? 'bg-gray-300 text-gray-500 cursor-not-allowed shadow-none hover:shadow-none hover:translate-y-0' 
+                : 'bg-[#25D366] text-white hover:bg-[#128C7E]'
+            }`}
+          >
+            <MessageCircle className="w-5 h-5" />
+            Checkout via WhatsApp
+          </button>
+        </div>
       </div>
 
       {/* Checkout Modal */}
@@ -125,30 +151,33 @@ export default function CartDrawer({
                 <label className="block text-sm font-medium text-primary mb-1">Nama Lengkap</label>
                 <input 
                   type="text" required
-                  value={buyerName} onChange={e => setBuyerName(e.target.value)}
-                  className="w-full px-4 py-3 bg-background border border-primary/10 rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary outline-none"
+                  value={buyerName} onChange={e => { setBuyerName(e.target.value); setErrors({...errors, name: ""}); }}
+                  className={`w-full px-4 py-3 bg-background border rounded-xl outline-none transition-colors ${errors.name ? 'border-red-400 focus:ring-1 focus:ring-red-400' : 'border-primary/10 focus:border-secondary focus:ring-1 focus:ring-secondary'}`}
                   placeholder="Budi Santoso"
                 />
+                {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
               </div>
               
               <div>
                 <label className="block text-sm font-medium text-primary mb-1">Nomor WhatsApp</label>
                 <input 
                   type="tel" required
-                  value={buyerPhone} onChange={e => setBuyerPhone(e.target.value)}
-                  className="w-full px-4 py-3 bg-background border border-primary/10 rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary outline-none"
+                  value={buyerPhone} onChange={e => { setBuyerPhone(e.target.value); setErrors({...errors, phone: ""}); }}
+                  className={`w-full px-4 py-3 bg-background border rounded-xl outline-none transition-colors ${errors.phone ? 'border-red-400 focus:ring-1 focus:ring-red-400' : 'border-primary/10 focus:border-secondary focus:ring-1 focus:ring-secondary'}`}
                   placeholder="08123456789"
                 />
+                {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
               </div>
 
               <div>
                 <label className="block text-sm font-medium text-primary mb-1">Alamat Lengkap Pengiriman</label>
                 <textarea 
                   required rows={3}
-                  value={buyerAddress} onChange={e => setBuyerAddress(e.target.value)}
-                  className="w-full px-4 py-3 bg-background border border-primary/10 rounded-xl focus:border-secondary focus:ring-1 focus:ring-secondary outline-none resize-none"
+                  value={buyerAddress} onChange={e => { setBuyerAddress(e.target.value); setErrors({...errors, address: ""}); }}
+                  className={`w-full px-4 py-3 bg-background border rounded-xl outline-none resize-none transition-colors ${errors.address ? 'border-red-400 focus:ring-1 focus:ring-red-400' : 'border-primary/10 focus:border-secondary focus:ring-1 focus:ring-secondary'}`}
                   placeholder="Jl. Perkebunan No. 12, Jawa Barat"
                 />
+                {errors.address && <p className="text-red-500 text-xs mt-1">{errors.address}</p>}
               </div>
 
               <div className="pt-4">

@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import FeedCalculator from "@/components/FeedCalculator";
+import Eshop from "@/components/Eshop";
 
 export default function Home() {
   return (
@@ -8,9 +9,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <FeedCalculator />
-      
-      {/* Spacer for scroll demonstration */}
-      <div className="h-[50vh]"></div>
+      <Eshop />
     </main>
   );
 }

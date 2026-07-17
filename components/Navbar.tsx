@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useCart } from "./CartContext";
@@ -10,6 +11,17 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { cartCount } = useCart();
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { name: "Beranda", href: "#home" },
@@ -28,16 +40,16 @@ export default function Navbar() {
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="font-serif text-2xl font-bold text-primary tracking-tight">
               {/* If user drops logo.png in public/images/ it will load here */}
-              <img 
-                src="/images/logo.png" 
-                alt="PalmFeed Logo" 
-                className="h-10 w-auto"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                }}
-              />
-              <span className="hidden">PalmFeed.</span>
+              <div className="relative h-10 w-32 hidden sm:block">
+                <Image 
+                  src="/images/logo.png" 
+                  alt="PalmFeed Logo" 
+                  fill
+                  className="object-contain object-left"
+                  priority
+                />
+              </div>
+              <span className="sm:hidden">PalmFeed.</span>
             </Link>
           </div>
 
@@ -73,19 +85,23 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <button onClick={() => setIsCartOpen(true)} className="relative text-primary mr-4 focus:outline-none">
+            <button 
+              onClick={() => setIsCartOpen(true)} 
+              className="relative text-primary mr-2 focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center"
+              aria-label="Keranjang"
+            >
               <ShoppingCart className="w-6 h-6" />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-secondary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                <span className="absolute top-0 right-0 bg-secondary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
                   {cartCount}
                 </span>
               )}
             </button>
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-primary p-2 focus:outline-none"
+              className="text-primary focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center"
+              aria-label="Menu"
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

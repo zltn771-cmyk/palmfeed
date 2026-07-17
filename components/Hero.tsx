@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Leaf } from "lucide-react";
 
 export default function Hero() {
@@ -49,24 +50,25 @@ export default function Hero() {
             {/* Split composite effect wrapper */}
             <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl flex">
               {/* We simulate the split image here. Assuming hero_split.png is available */}
-              <img 
-                src="/images/hero_split.png" 
-                alt="PalmFeed Farm & Cow" 
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                   // Fallback gradient if image not found
-                   e.currentTarget.style.display = 'none';
-                   e.currentTarget.parentElement?.classList.add('bg-gradient-to-br', 'from-primary/20', 'to-secondary/20');
-                }}
-              />
+              <div className="relative w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20">
+                <Image 
+                  src="/images/hero_split.png" 
+                  alt="PalmFeed Farm & Cow" 
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
               
               {/* Packaging element floating over the composite */}
               <div className="absolute -bottom-10 -right-4 md:-bottom-12 md:-right-8 w-1/2 max-w-[280px] animate-float z-20">
-                <img 
+                <Image 
                   src="/images/real_product.png" 
                   alt="PalmFeed 30kg Packaging" 
+                  width={280}
+                  height={380}
                   className="w-full h-auto drop-shadow-2xl filter"
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
                 />
               </div>
             </div>

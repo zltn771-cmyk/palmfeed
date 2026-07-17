@@ -3,8 +3,9 @@ import "./globals.css";
 import { CartProvider } from "@/components/CartContext";
 
 export const metadata: Metadata = {
-  title: "PalmFeed | Premium Ruminant Feed",
-  description: "Transforming oil palm fronds into high-nutrition ruminant feed.",
+  title: "PalmFeed - Pakan Ternak Ruminansia Organik & Premium",
+  description: "Transformasi inovatif limbah daun sawit menjadi stok pakan ruminansia bernilai ekonomi tinggi. Mendukung peternakan berkelanjutan dan organik di Indonesia.",
+  keywords: ["pakan ruminansia", "pakan ternak sapi", "limbah daun sawit", "PalmFeed", "pakan organik", "peternakan berkelanjutan"],
 };
 
 export default function RootLayout({
