@@ -38,7 +38,7 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12 w-full max-w-6xl mx-auto">
           
           {/* LEFT COLUMN: The Scenery & Visual Asset */}
-          <div className="w-full lg:w-1/2 h-[450px] relative rounded-3xl overflow-hidden shadow-lg border border-primary/5">
+          <div className="w-full lg:w-1/2 h-[450px] relative rounded-3xl overflow-hidden shadow-lg border border-primary/5 group">
             <Image 
               src="/images/hero_split.png" 
               alt="Palm plantation and cow" 
@@ -47,6 +47,17 @@ export default function Hero() {
               sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover object-left md:object-center"
             />
+            {/* Overlay to cover the green prototype bag on the table with the real product */}
+            <div className="absolute bottom-[2%] right-[5%] w-[35%] h-[55%] z-10 transition-transform duration-500 group-hover:scale-105">
+              <div className="relative w-full h-full bg-[#F7F5F0] rounded-xl shadow-2xl p-2 border border-white/50 overflow-hidden flex justify-center items-center">
+                <Image
+                  src="/images/real_product.jpg"
+                  alt="Real PalmFeed Product"
+                  fill
+                  className="object-contain p-1 mix-blend-multiply drop-shadow-md"
+                />
+              </div>
+            </div>
           </div>
 
           {/* RIGHT COLUMN: The Product Showcase Card */}
