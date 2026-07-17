@@ -40,22 +40,13 @@ export default function Hero() {
           {/* LEFT COLUMN: The Scenery & Visual Asset */}
           <div className="w-full lg:w-1/2 h-[450px] relative rounded-3xl overflow-hidden shadow-lg border border-primary/5 group">
             <Image 
-              src="/images/hero_split.png" 
-              alt="Palm plantation and cow" 
+              src="/images/hero_final_mockup.jpg" 
+              alt="Palm plantation, cow, and product" 
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 50vw"
-              className="object-cover object-left md:object-center"
+              className="object-cover object-left md:object-center transition-transform duration-700 group-hover:scale-105"
             />
-            {/* Overlay to cover the green prototype bag on the table with the real product */}
-            <div className="absolute bottom-0 right-[2%] w-[40%] h-[60%] z-10 transition-transform duration-500 group-hover:scale-105">
-              <Image
-                src="/images/real_product.jpg"
-                alt="Real PalmFeed Product"
-                fill
-                className="object-contain mix-blend-multiply drop-shadow-2xl"
-              />
-            </div>
           </div>
 
           {/* RIGHT COLUMN: The Product Showcase Card */}
@@ -65,10 +56,10 @@ export default function Hero() {
               {/* Image Insert */}
               <div className="bg-[#F7F5F0] rounded-2xl p-6 flex justify-center relative aspect-[4/5] mb-8 border border-black/[0.02]">
                 <Image 
-                  src="/images/real_product.jpg" 
+                  src="/images/hero_final_bag.png" 
                   alt="PalmFeed Packaging" 
                   fill
-                  className="object-contain p-4 mix-blend-multiply drop-shadow-md transition-transform duration-500 hover:scale-[1.05]"
+                  className="object-contain p-2 drop-shadow-lg transition-transform duration-500 hover:scale-[1.05]"
                 />
               </div>
 
