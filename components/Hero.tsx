@@ -74,7 +74,7 @@ export default function Hero() {
               {/* Packaging element floating over the composite */}
               <div className="absolute -bottom-10 -right-4 md:-bottom-12 md:-right-8 w-1/2 max-w-[280px] animate-float z-20">
                 <Image 
-                  src="/images/real_product.png" 
+                  src="/images/real_product.jpg" 
                   alt="PalmFeed 30kg Packaging" 
                   width={280}
                   height={380}

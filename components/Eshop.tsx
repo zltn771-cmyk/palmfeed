@@ -11,7 +11,7 @@ const products = [
     name: "PalmFeed 30kg - Pakan Ruminansia Premium",
     price: 125000,
     weightPerItem: 30,
-    image: "/images/real_product.png",
+    image: "/images/real_product.jpg",
     rating: 4.8,
     reviews: 124,
     description: "Nutrisi lengkap untuk penggemukan sapi dan kambing. Mengandung protein tinggi dari limbah sawit terfermentasi."
@@ -21,7 +21,7 @@ const products = [
     name: "PalmFeed 50kg - Pakan Ruminansia Ekstra",
     price: 200000,
     weightPerItem: 50,
-    image: "/images/real_product.png",
+    image: "/images/real_product.jpg",
     rating: 4.9,
     reviews: 89,
     description: "Kemasan hemat untuk peternakan skala menengah hingga besar. Formula khusus kaya serat dan mineral."
@@ -31,7 +31,7 @@ const products = [
     name: "PalmFeed Starter 15kg - Pedet & Cempe",
     price: 75000,
     weightPerItem: 15,
-    image: "/images/real_product.png",
+    image: "/images/real_product.jpg",
     rating: 4.7,
     reviews: 56,
     description: "Pakan masa awal pertumbuhan anak sapi dan kambing dengan tekstur lebih halus dan mudah dicerna."
@@ -41,7 +41,7 @@ const products = [
     name: "PalmFeed Dairy 30kg - Sapi Perah",
     price: 135000,
     weightPerItem: 30,
-    image: "/images/real_product.png",
+    image: "/images/real_product.jpg",
     rating: 5.0,
     reviews: 42,
     description: "Formulasi khusus untuk sapi perah guna meningkatkan kuantitas dan kualitas produksi susu harian."

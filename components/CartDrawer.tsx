@@ -92,7 +92,7 @@ export default function CartDrawer({
             cartItems.map((item) => (
               <div key={item.id} className="flex gap-4 p-4 bg-white rounded-2xl border border-primary/10 shadow-sm relative group">
                 <div className="relative w-20 h-20 bg-background rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0">
-                  <Image src="/images/real_product.png" alt={item.name} fill className="object-contain p-2" sizes="80px" />
+                  <Image src="/images/real_product.jpg" alt={item.name} fill className="object-contain p-2" sizes="80px" />
                 </div>
                 <div className="flex-1">
                   <h4 className="font-semibold text-primary text-sm mb-1 leading-tight">{item.name}</h4>

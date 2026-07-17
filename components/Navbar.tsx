@@ -42,7 +42,7 @@ export default function Navbar() {
               {/* If user drops logo.png in public/images/ it will load here */}
               <div className="relative h-10 w-32 hidden sm:block">
                 <Image 
-                  src="/images/logo.png" 
+                  src="/images/logo.jpg" 
                   alt="PalmFeed Logo" 
                   fill
                   className="object-contain object-left"
