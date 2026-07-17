@@ -48,15 +48,13 @@ export default function Hero() {
               className="object-cover object-left md:object-center"
             />
             {/* Overlay to cover the green prototype bag on the table with the real product */}
-            <div className="absolute bottom-[2%] right-[5%] w-[35%] h-[55%] z-10 transition-transform duration-500 group-hover:scale-105">
-              <div className="relative w-full h-full bg-[#F7F5F0] rounded-xl shadow-2xl p-2 border border-white/50 overflow-hidden flex justify-center items-center">
-                <Image
-                  src="/images/real_product.jpg"
-                  alt="Real PalmFeed Product"
-                  fill
-                  className="object-contain p-1 mix-blend-multiply drop-shadow-md"
-                />
-              </div>
+            <div className="absolute bottom-0 right-[2%] w-[40%] h-[60%] z-10 transition-transform duration-500 group-hover:scale-105">
+              <Image
+                src="/images/real_product.jpg"
+                alt="Real PalmFeed Product"
+                fill
+                className="object-contain mix-blend-multiply drop-shadow-2xl"
+              />
             </div>
           </div>
 
