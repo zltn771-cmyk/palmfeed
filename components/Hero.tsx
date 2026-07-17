@@ -18,12 +18,22 @@ export default function Hero() {
             </div>
             
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-primary leading-[1.1] mb-6">
-              Mengubah Limbah Sawit Menjadi <span className="text-secondary">Nutrisi Premium.</span>
+              Pakan Ternak Organik <span className="text-secondary">Limbah Daun Sawit.</span>
             </h1>
             
-            <p className="text-lg md:text-xl text-primary/70 mb-10 max-w-xl font-sans">
-              Tingkatkan kesehatan dan produktivitas hewan ternak Anda sembari mendukung ekosistem pertanian yang berkelanjutan dan ramah lingkungan.
+            <p className="text-lg md:text-xl text-primary/70 mb-8 max-w-xl font-sans">
+              Tingkatkan kesehatan dan produktivitas hewan ternak Anda dengan nutrisi tinggi yang 100% organik, ramah lingkungan, dan bersertifikat Halal.
             </p>
+
+            {/* Badges from Packaging */}
+            <div className="flex flex-wrap gap-3 mb-10">
+              {['100% Organik', 'Bernutrisi Tinggi', 'Ramah Lingkungan', '100% Halal'].map((badge) => (
+                <div key={badge} className="flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-primary/10 shadow-sm">
+                  <div className="w-2 h-2 rounded-full bg-secondary"></div>
+                  <span className="text-sm font-bold text-primary">{badge}</span>
+                </div>
+              ))}
+            </div>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
