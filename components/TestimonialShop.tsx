@@ -87,14 +87,14 @@ export default function TestimonialShop() {
 
           {/* Right Column: E-Shop Spotlight Card */}
           <div className="bg-white rounded-[2rem] p-6 lg:p-8 shadow-2xl transition-all duration-300">
-            {/* Solid White Inner Box for Image */}
-            <div className="rounded-2xl overflow-hidden flex justify-center items-center relative aspect-[4/5] mb-6 border border-gray-100">
+            {/* Cream Inner Box for Image */}
+            <div className="bg-[#F7F5F0] rounded-2xl p-6 flex justify-center items-center relative aspect-[4/5] mb-6">
               <Image 
                 src={product.image}
                 alt={product.name}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="object-contain p-8 mix-blend-multiply drop-shadow-xl transition-transform duration-500 hover:scale-105"
               />
             </div>
             

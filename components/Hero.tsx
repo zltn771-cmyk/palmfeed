@@ -54,12 +54,12 @@ export default function Hero() {
             <div className="bg-white rounded-3xl p-6 shadow-xl max-w-md w-full border border-gray-100 flex flex-col">
               
               {/* Image Insert */}
-              <div className="rounded-2xl overflow-hidden flex justify-center relative aspect-[4/5] mb-6 border border-gray-100">
+              <div className="bg-[#F7F5F0] rounded-2xl p-6 flex justify-center relative aspect-[4/5] mb-6">
                 <Image 
                   src="/images/real_product.jpg" 
                   alt="PalmFeed Packaging" 
                   fill
-                  className="object-cover"
+                  className="object-contain p-4 mix-blend-multiply drop-shadow-md transition-transform duration-500 hover:scale-105"
                 />
               </div>
 
