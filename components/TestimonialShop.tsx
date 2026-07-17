@@ -51,7 +51,7 @@ export default function TestimonialShop() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           
           {/* Left Column: Farmer Review & Photo */}
-          <div className="flex flex-col">
+          <div className="flex flex-col lg:mt-12">
             <Quote className="w-12 h-12 text-white fill-white opacity-90 mb-6" />
             
             <p className="text-xl md:text-2xl text-white/90 font-sans italic leading-relaxed mb-8 font-light">
@@ -86,9 +86,9 @@ export default function TestimonialShop() {
           </div>
 
           {/* Right Column: E-Shop Spotlight Card */}
-          <div className="bg-white rounded-[2rem] p-6 lg:p-8 shadow-2xl transition-all duration-300">
+          <div className="bg-white/90 backdrop-blur-xl border border-white/20 rounded-[2rem] p-6 lg:p-8 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
             {/* Cream Inner Box for Image */}
-            <div className="bg-[#F7F5F0] rounded-2xl p-6 flex justify-center items-center relative aspect-[4/5] mb-6">
+            <div className="bg-[#F7F5F0] rounded-2xl p-6 flex justify-center items-center relative aspect-[4/5] mb-8 border border-black/[0.02]">
               <Image 
                 src={product.image}
                 alt={product.name}
@@ -113,17 +113,17 @@ export default function TestimonialShop() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button 
                   onClick={handleAddToCart}
-                  className={`flex-1 px-6 py-3.5 rounded-xl font-bold transition-all border-2 ${
+                  className={`flex-1 px-6 py-4 rounded-xl font-bold transition-all duration-300 border border-primary/20 ${
                     added 
-                    ? "bg-green-600 border-green-600 text-white"
-                    : "border-primary text-primary hover:bg-primary/5"
+                    ? "bg-green-600 border-green-600 text-white shadow-lg"
+                    : "text-primary hover:bg-primary/5 hover:-translate-y-1 hover:shadow-md"
                   }`}
                 >
-                  {added ? "Ditambahkan" : "Tambah ke Keranjang"}
+                  {added ? "Ditambahkan" : "Tambah Keranjang"}
                 </button>
                 <button 
                   onClick={handleAddToCart}
-                  className="flex-1 px-6 py-3.5 rounded-xl font-bold transition-all bg-[#a68a35] text-white border-2 border-[#a68a35] hover:bg-[#8c742c] hover:border-[#8c742c] shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  className="flex-1 px-6 py-4 rounded-xl font-bold transition-all duration-300 bg-[#a68a35] text-white hover:bg-[#8c742c] shadow-lg hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]"
                 >
                   Beli Sekarang
                 </button>

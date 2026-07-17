@@ -30,7 +30,7 @@ export default function FeedCalculator() {
   };
 
   return (
-    <section id="calculator" className="py-24 bg-white">
+    <section id="calculator" className="py-24 relative z-10">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">
@@ -41,7 +41,7 @@ export default function FeedCalculator() {
           </p>
         </div>
 
-        <div className="bg-background border border-primary/20 rounded-3xl shadow-lg p-6 md:p-10 relative overflow-hidden">
+        <div className="bg-white/70 backdrop-blur-xl border border-black/[0.03] rounded-[2.5rem] shadow-xl p-6 md:p-12 relative overflow-hidden transition-all duration-500 hover:shadow-2xl">
           {/* Decorative faint icon */}
           <Calculator className="absolute -bottom-10 -right-10 w-64 h-64 text-secondary/5 -z-0" />
 
@@ -117,10 +117,10 @@ export default function FeedCalculator() {
               <button
                 onClick={handleAddToCart}
                 disabled={added}
-                className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-semibold transition-all shadow-md ${
+                className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold transition-all duration-300 shadow-md ${
                   added 
-                  ? "bg-green-600 text-white" 
-                  : "bg-primary text-white hover:bg-accent hover:shadow-lg transform hover:-translate-y-0.5"
+                  ? "bg-green-600 text-white shadow-lg" 
+                  : "bg-primary text-white hover:bg-accent hover:shadow-xl transform hover:-translate-y-1 hover:scale-[1.02]"
                 }`}
               >
                 <ShoppingBag className="w-5 h-5" />

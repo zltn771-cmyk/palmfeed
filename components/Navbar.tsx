@@ -24,15 +24,15 @@ export default function Navbar() {
   }, [isMobileMenuOpen]);
 
   const navLinks = [
-    { name: "Beranda", href: "#home" },
-    { name: "Tentang Kami", href: "#about" },
-    { name: "Kalkulator Pakan", href: "#calculator" },
-    { name: "E-Shop", href: "#shop" },
-    { name: "Kontak", href: "#contact" },
+    { name: "Beranda", href: "/" },
+    { name: "Tentang Kami", href: "/tentang" },
+    { name: "Kalkulator Pakan", href: "/kalkulator" },
+    { name: "E-Shop", href: "/shop" },
+    { name: "Kontak", href: "/kontak" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 glassmorphism transition-all duration-300">
+    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/70 border-b border-black/[0.03] transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           
@@ -78,8 +78,8 @@ export default function Navbar() {
               )}
             </button>
             <Link 
-              href="#contact" 
-              className="bg-primary text-white px-6 py-2.5 rounded-full font-medium hover:bg-accent transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+              href="/kontak" 
+              className="bg-primary text-white px-6 py-2.5 rounded-full font-medium hover:bg-accent transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-1 hover:scale-[1.02]"
             >
               Hubungi Kami
             </Link>
@@ -127,9 +127,9 @@ export default function Navbar() {
             </Link>
           ))}
           <Link 
-            href="#contact"
+            href="/kontak"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="bg-primary text-white text-center py-3 rounded-xl font-medium mt-4 shadow-md"
+            className="bg-primary text-white text-center py-3 rounded-xl font-medium mt-4 shadow-md hover:-translate-y-1 transition-transform duration-300"
           >
             Hubungi Kami
           </Link>

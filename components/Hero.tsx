@@ -6,7 +6,7 @@ import { ArrowRight, Leaf } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative w-full min-h-screen pt-24 pb-12 flex flex-col items-center bg-background overflow-hidden">
+    <section id="home" className="relative w-full min-h-screen pt-24 pb-12 flex flex-col items-center bg-transparent overflow-hidden z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center">
         
         {/* Top: Typography & CTAs (Centered) */}
@@ -51,15 +51,15 @@ export default function Hero() {
 
           {/* RIGHT COLUMN: The Product Showcase Card */}
           <div className="w-full lg:w-1/2 flex justify-center lg:justify-start">
-            <div className="bg-white rounded-3xl p-6 shadow-xl max-w-md w-full border border-gray-100 flex flex-col">
+            <div className="bg-white/70 backdrop-blur-xl rounded-[2rem] p-8 shadow-xl max-w-md w-full border border-black/[0.03] flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
               
               {/* Image Insert */}
-              <div className="bg-[#F7F5F0] rounded-2xl p-6 flex justify-center relative aspect-[4/5] mb-6">
+              <div className="bg-[#F7F5F0] rounded-2xl p-6 flex justify-center relative aspect-[4/5] mb-8 border border-black/[0.02]">
                 <Image 
                   src="/images/real_product.jpg" 
                   alt="PalmFeed Packaging" 
                   fill
-                  className="object-contain p-4 mix-blend-multiply drop-shadow-md transition-transform duration-500 hover:scale-105"
+                  className="object-contain p-4 mix-blend-multiply drop-shadow-md transition-transform duration-500 hover:scale-[1.05]"
                 />
               </div>
 
@@ -75,16 +75,16 @@ export default function Hero() {
                 </div>
                 
                 {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex flex-col sm:flex-row gap-4">
                   <Link 
-                    href="#shop"
-                    className="flex-1 text-center px-4 py-3 rounded-xl font-bold transition-all border-2 border-primary text-primary hover:bg-primary/5"
+                    href="/shop"
+                    className="flex-1 text-center px-4 py-3.5 rounded-xl font-bold transition-all duration-300 border border-primary/20 text-primary hover:bg-primary/5 hover:-translate-y-1 hover:shadow-md"
                   >
-                    Tambah ke Keranjang
+                    Tambah Keranjang
                   </Link>
                   <Link 
-                    href="#shop"
-                    className="flex-1 text-center px-4 py-3 rounded-xl font-bold transition-all bg-[#a68a35] text-white border-2 border-[#a68a35] hover:bg-[#8c742c] hover:border-[#8c742c] shadow-md"
+                    href="/shop"
+                    className="flex-1 text-center px-4 py-3.5 rounded-xl font-bold transition-all duration-300 bg-[#a68a35] text-white hover:bg-[#8c742c] shadow-lg hover:shadow-xl hover:-translate-y-1 hover:scale-[1.02]"
                   >
                     Beli Sekarang
                   </Link>

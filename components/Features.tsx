@@ -43,16 +43,25 @@ export default function Features() {
   ];
 
   return (
-    <section className="py-20 bg-background">
+    <section className="py-24 relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {/* Asymmetric Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
           {features.map((feature, idx) => (
-            <div key={idx} className="bg-white rounded-2xl p-6 shadow-sm border border-primary/5 flex flex-col items-center text-center transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-              <div className="mb-4">
+            <div 
+              key={idx} 
+              className={`
+                bg-white/70 backdrop-blur-xl border border-black/[0.03] 
+                rounded-[2rem] p-8 shadow-sm flex flex-col items-center text-center 
+                transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02]
+                ${idx % 2 !== 0 ? 'lg:mt-12' : 'lg:mb-12'}
+              `}
+            >
+              <div className="mb-6 p-4 rounded-full bg-secondary/10">
                 {feature.icon}
               </div>
-              <h3 className="font-bold text-primary mb-2 text-lg">{feature.title}</h3>
-              <p className="text-sm text-primary/70 leading-relaxed">
+              <h3 className="font-serif font-bold text-primary mb-3 text-2xl tracking-tight">{feature.title}</h3>
+              <p className="text-base text-primary/70 leading-relaxed font-sans">
                 {feature.desc}
               </p>
             </div>
