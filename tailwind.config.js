@@ -14,8 +14,8 @@ module.exports = {
         accent: "#3B5E3D", // Accent hover
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'sans-serif'],
-        serif: ['var(--font-playfair)', 'serif'],
+        sans: ['Inter', 'sans-serif'],
+        serif: ['"Playfair Display"', 'serif'],
       },
     },
   },
