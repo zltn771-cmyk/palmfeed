@@ -115,10 +115,13 @@ export default function CartDrawer({
 
         {/* Footer / Checkout */}
         <div className="p-6 bg-white border-t border-primary/10 shadow-[0_-4px_20px_rgba(0,0,0,0.02)]">
-          <div className="flex justify-between items-center mb-6">
+          <div className="flex justify-between items-center mb-2">
             <span className="text-primary/70">Subtotal:</span>
             <span className="text-2xl font-bold text-primary">Rp {cartTotal.toLocaleString('id-ID')}</span>
           </div>
+          <p className="text-xs text-primary/50 text-right mb-6">
+            *Estimasi ongkos kirim akan dihitung via WhatsApp
+          </p>
           <button 
             onClick={() => setShowCheckoutModal(true)}
             disabled={cartItems.length === 0}
