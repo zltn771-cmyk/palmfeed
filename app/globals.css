@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-primary antialiased;
+  }
+
+  /* Dark mode prevention: forcing light mode colors */
+  @media (prefers-color-scheme: dark) {
+    body {
+      @apply bg-background text-primary;
+    }
+  }
+}
+
+@layer utilities {
+  .glassmorphism {
+    @apply bg-background/80 backdrop-blur-md border-b border-primary/5 shadow-sm;
+  }
+}
+
+/* Floating animation for packaging */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
