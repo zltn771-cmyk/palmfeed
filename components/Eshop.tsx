@@ -2,168 +2,116 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ShoppingBag, Star, Plus, Minus } from "lucide-react";
-import { useCart, CartItem } from "./CartContext";
+import { useCart } from "./CartContext";
 
-const products = [
-  {
-    id: "palmfeed-30kg",
-    name: "PalmFeed 30kg - Pakan Ruminansia Premium",
-    price: 180000,
-    weightPerItem: 30,
-    image: "/images/real_product.jpg",
-    status: "Tersedia",
-    features: ["100% Organik", "Bernutrisi Tinggi", "Ramah Lingkungan", "Halal"],
-    rating: 4.8,
-    reviews: 124,
-    description: "Nutrisi lengkap untuk penggemukan sapi dan kambing. Mengandung protein tinggi dari limbah sawit terfermentasi."
-  },
-  {
-    id: "palmfeed-50kg",
-    name: "PalmFeed 50kg - Pakan Ruminansia Ekstra",
-    price: 280000,
-    weightPerItem: 50,
-    image: "/images/real_product.jpg",
-    status: "Tersedia",
-    features: ["100% Organik", "Bernutrisi Tinggi", "Ramah Lingkungan", "Halal"],
-    rating: 4.9,
-    reviews: 89,
-    description: "Kemasan hemat untuk peternakan skala menengah hingga besar. Formula khusus kaya serat dan mineral."
-  },
-  {
-    id: "palmfeed-starter-15kg",
-    name: "PalmFeed Starter 15kg - Pedet & Cempe",
-    price: 95000,
-    weightPerItem: 15,
-    image: "/images/real_product.jpg",
-    status: "Tersedia",
-    features: ["100% Organik", "Bernutrisi Tinggi", "Mudah Dicerna", "Halal"],
-    rating: 4.7,
-    reviews: 56,
-    description: "Pakan masa awal pertumbuhan anak sapi dan kambing dengan tekstur lebih halus dan mudah dicerna."
-  },
-  {
-    id: "palmfeed-dairy-30kg",
-    name: "PalmFeed Dairy 30kg - Sapi Perah",
-    price: 195000,
-    weightPerItem: 30,
-    image: "/images/real_product.jpg",
-    status: "Tersedia",
-    features: ["100% Organik", "Kaya Kalsium", "Ramah Lingkungan", "Halal"],
-    rating: 5.0,
-    reviews: 42,
-    description: "Formulasi khusus untuk sapi perah guna meningkatkan kuantitas dan kualitas produksi susu harian."
-  }
-];
-
-function ProductCard({ product, onAddToCart }: { product: any, onAddToCart: (p: any, qty: number) => void }) {
-  const [quantity, setQuantity] = useState(1);
+export default function Eshop() {
+  const { addToCart } = useCart();
   const [added, setAdded] = useState(false);
 
-  const handleAdd = () => {
-    onAddToCart(product, quantity);
+  const product = {
+    id: "palmfeed-30kg-premium",
+    name: "PalmFeed 30 kg Pakan Ruminai",
+    price: 390000,
+    weightPerItem: 30,
+    image: "/images/real_product.jpg",
+  };
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1,
+      weightPerItem: product.weightPerItem
+    });
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
   };
 
   return (
-    <div className="bg-white rounded-3xl border border-primary/10 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col h-full">
-      <div className="relative aspect-square bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center p-6 overflow-hidden">
-        <span className="absolute top-4 left-4 bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full z-10 shadow-sm border border-green-200">
-          {product.status}
-        </span>
-        <Image 
-          src={product.image}
-          alt={product.name}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-contain p-8 mix-blend-multiply group-hover:scale-110 transition-transform duration-500"
-        />
-      </div>
-
-      <div className="p-6 flex flex-col flex-grow">
-        <h3 className="font-bold text-lg text-primary mb-2 line-clamp-2 leading-tight">
-          {product.name}
-        </h3>
-
-        <div className="flex flex-wrap gap-1.5 mb-3">
-          {product.features?.map((feat: string) => (
-            <span key={feat} className="text-[10px] font-semibold bg-secondary/10 text-secondary px-2 py-1 rounded-full border border-secondary/20">
-              {feat}
-            </span>
-          ))}
-        </div>
+    <section id="shop" className="py-24 bg-background relative">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         
-        <p className="text-sm text-primary/70 mb-4 line-clamp-2 flex-grow">
-          {product.description}
-        </p>
-        
-        <div className="mt-auto">
-          <div className="text-2xl font-bold text-secondary mb-4">
-            Rp {product.price.toLocaleString('id-ID')}
-          </div>
-          
-          <div className="flex items-center gap-4 mb-4 bg-background p-1.5 rounded-xl border border-primary/10 w-max">
-             <button onClick={() => setQuantity(Math.max(1, quantity - 1))} className="w-8 h-8 flex items-center justify-center rounded-lg bg-white text-primary hover:bg-primary/5 shadow-sm transition-colors"><Minus className="w-4 h-4"/></button>
-             <span className="font-bold text-primary w-6 text-center">{quantity}</span>
-             <button onClick={() => setQuantity(quantity + 1)} className="w-8 h-8 flex items-center justify-center rounded-lg bg-white text-primary hover:bg-primary/5 shadow-sm transition-colors"><Plus className="w-4 h-4"/></button>
-          </div>
-          
-          <div className="flex gap-2">
-            <button
-              onClick={handleAdd}
-              className={`flex-1 py-3 rounded-xl font-bold transition-all text-sm flex items-center justify-center gap-1.5 ${
-                added 
-                  ? 'bg-green-600 text-white shadow-md' 
-                  : 'bg-primary/10 text-primary hover:bg-primary/20'
-              }`}
-            >
-              <ShoppingBag className="w-4 h-4" />
-              {added ? "Ditambahkan" : "Keranjang"}
-            </button>
-            <button
-              onClick={handleAdd}
-              className="flex-1 bg-primary text-white py-3 rounded-xl font-bold transition-all hover:bg-accent text-sm"
-            >
-              Beli Sekarang
-            </button>
-          </div>
+        {/* Floating Calf Decorative Image (Simulated with process_farm or generic if not available) */}
+        <div className="absolute -top-12 -right-4 lg:-top-20 lg:-right-12 w-32 h-32 md:w-48 md:h-48 z-20 animate-float pointer-events-none">
+          <Image 
+            src="/images/process_farm.png" 
+            alt="Decorative Calf" 
+            fill
+            className="object-contain filter drop-shadow-lg opacity-90"
+          />
         </div>
-      </div>
-    </div>
-  );
-}
 
-export default function Eshop() {
-  const { addToCart } = useCart();
-
-  const handleAddToCart = (product: typeof products[0], qty: number) => {
-    addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      quantity: qty,
-      weightPerItem: product.weightPerItem
-    });
-  };
-
-  return (
-    <section id="shop" className="py-24 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">
-            Produk PalmFeed
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mb-3">
+            E-SHOP
           </h2>
-          <p className="text-primary/70 max-w-2xl mx-auto">
-            Pilih varian pakan terbaik yang disesuaikan dengan kebutuhan fase pertumbuhan dan jenis ternak ruminansia Anda.
+          <p className="text-primary/60 font-sans">
+            Menyediakan pakan ruminansia berkualitas tinggi untuk hasil optimal.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} onAddToCart={handleAddToCart} />
-          ))}
+        {/* Main Product Card */}
+        <div className="bg-white rounded-[2rem] shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-primary/5 p-4 md:p-8 relative overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            
+            {/* Left Column: Image Box */}
+            <div className="bg-[#EFECE3] rounded-2xl p-8 flex items-center justify-center relative aspect-[4/5] md:aspect-square">
+              <Image 
+                src={product.image}
+                alt={product.name}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain p-6 md:p-10 mix-blend-multiply hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+
+            {/* Right Column: Info */}
+            <div className="flex flex-col justify-center py-4 md:py-8 pr-4">
+              <h3 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-2 leading-tight">
+                {product.name}
+              </h3>
+              
+              <p className="text-secondary font-medium text-lg mb-6">
+                Daun Sawit
+              </p>
+              
+              {/* Price Pill */}
+              <div className="inline-flex bg-secondary text-white font-bold text-xl md:text-2xl px-6 py-2 rounded-full mb-6 w-max shadow-md">
+                Rp {product.price.toLocaleString('id-ID')}
+              </div>
+              
+              {/* Stock */}
+              <div className="mb-8">
+                <span className="font-bold text-primary">Stok: </span>
+                <span className="font-bold text-[#2E7D32]">Tersedia</span>
+              </div>
+              
+              {/* Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button 
+                  onClick={handleAddToCart}
+                  className={`px-8 py-4 rounded-full font-bold transition-all border-2 ${
+                    added 
+                    ? "bg-green-600 border-green-600 text-white"
+                    : "border-primary text-primary hover:bg-primary/5"
+                  }`}
+                >
+                  {added ? "Telah Ditambahkan" : "Tambah ke Keranjang"}
+                </button>
+                <button 
+                  onClick={handleAddToCart}
+                  className="px-8 py-4 rounded-full font-bold transition-all bg-secondary text-white border-2 border-secondary hover:bg-[#a68a35] hover:border-[#a68a35] shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  Beli Sekarang
+                </button>
+              </div>
+            </div>
+
+          </div>
         </div>
+
       </div>
     </section>
   );
