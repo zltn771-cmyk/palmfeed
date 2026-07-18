@@ -14,7 +14,7 @@ export default function TestimonialShop() {
     addToCart({
       id: "palmfeed-30kg",
       name: "PalmFeed 30kg - Pakan Ruminansia Premium",
-      price: 210000,
+      price: 180000,
       quantity: 1,
       weightPerItem: 30
     });
@@ -110,7 +110,7 @@ export default function TestimonialShop() {
                     <h3 className="font-serif text-3xl font-bold text-white mb-2">PalmFeed Premium</h3>
                     <p className="text-white/50 text-sm mb-4">Kemasan Eksklusif 30 KG</p>
                     <div className="text-[#D4AF37] text-4xl font-bold font-sans">
-                      Rp 210.000
+                      Rp 180.000
                     </div>
                   </div>
                   
