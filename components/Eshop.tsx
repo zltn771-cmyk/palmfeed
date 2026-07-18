@@ -11,7 +11,7 @@ export default function Eshop() {
   const product = {
     id: "palmfeed-30kg-premium",
     name: "PalmFeed 30 kg Pakan Ruminai",
-    price: 390000,
+    price: 210000,
     weightPerItem: 30,
     image: "/images/real_product.jpg",
   };
