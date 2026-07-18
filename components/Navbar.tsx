@@ -33,7 +33,7 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/70 border-b border-black/[0.03] transition-all duration-300">
+      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-background/60 border-b border-white/[0.05] transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
           
@@ -80,7 +80,7 @@ export default function Navbar() {
             </button>
             <Link 
               href="/kontak" 
-              className="bg-primary text-white px-6 py-2.5 rounded-full font-medium hover:bg-accent transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-1 hover:scale-[1.02]"
+              className="bg-white text-background px-6 py-2.5 rounded-full font-medium hover:bg-secondary transition-all duration-300 shadow-[0_0_15px_rgba(0,255,163,0.3)] hover:shadow-[0_0_25px_rgba(0,255,163,0.6)] transform hover:-translate-y-1 hover:scale-[1.02]"
             >
               Hubungi Kami
             </Link>
@@ -113,7 +113,7 @@ export default function Navbar() {
 
       {/* Mobile Navigation Menu */}
       <div 
-        style={{ backgroundColor: '#F7F5F0' }}
+        style={{ backgroundColor: '#0A140B' }}
         className={`md:hidden fixed inset-0 top-20 z-[100] transform transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
@@ -132,7 +132,7 @@ export default function Navbar() {
           <Link 
             href="/kontak"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="bg-primary text-white text-center py-3 rounded-xl font-medium mt-4 shadow-md hover:-translate-y-1 transition-transform duration-300"
+            className="bg-secondary text-background text-center py-3 rounded-xl font-bold mt-4 shadow-[0_0_20px_rgba(0,255,163,0.4)] hover:-translate-y-1 transition-transform duration-300"
           >
             Hubungi Kami
           </Link>

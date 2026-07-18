@@ -8,10 +8,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#1E3F20", // Deep Forest Green
-        secondary: "#8B7314", // Muted Olive Gold
-        background: "#F7F5F0", // Soft Warm Cream
-        accent: "#3B5E3D", // Accent hover
+        primary: "#E2E8F0", // Off-white for high contrast text
+        secondary: "#00FFA3", // Neon Emerald
+        background: "#0A140B", // Midnight Emerald Dark Space
+        accent: "#D4AF37", // Glowing Gold
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
@@ -21,11 +21,18 @@ module.exports = {
       },
       animation: {
         'marquee': 'marquee 25s linear infinite',
+        'blob': 'blob 10s infinite alternate',
       },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-100%)' },
+        },
+        blob: {
+          '0%': { transform: 'translate(0px, 0px) scale(1)' },
+          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+          '100%': { transform: 'translate(0px, 0px) scale(1)' },
         }
       }
     },
