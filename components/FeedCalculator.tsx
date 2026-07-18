@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { Calculator, ShoppingBag, Info } from "lucide-react";
+import { Calculator, ShoppingBag, Info, CheckCircle2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "./CartContext";
 
 export default function FeedCalculator() {
@@ -98,34 +99,59 @@ export default function FeedCalculator() {
                 </h3>
                 
                 <div className="space-y-4 mb-8">
-                  <div className="flex justify-between items-center border-b border-primary/10 pb-3">
-                    <span className="text-primary/70">Kebutuhan per Ekor/Hari:</span>
+                  <div className="flex justify-between items-center border-b border-white/50 pb-3">
+                    <span className="text-primary/70 font-medium">Kebutuhan per Ekor/Hari:</span>
                     <span className="font-semibold text-primary">{dailyFeedPerHead.toFixed(1)} Kg</span>
                   </div>
-                  <div className="flex justify-between items-center border-b border-primary/10 pb-3">
-                    <span className="text-primary/70">Total Kebutuhan (Kg):</span>
+                  <div className="flex justify-between items-center border-b border-white/50 pb-3">
+                    <span className="text-primary/70 font-medium">Total Kebutuhan (Kg):</span>
                     <span className="font-semibold text-primary">{totalNeededKg.toLocaleString()} Kg</span>
                   </div>
-                  <div className="flex justify-between items-center pt-2">
-                    <span className="text-lg font-medium text-primary">Rekomendasi Pembelian:</span>
-                    <span className="text-2xl font-bold text-secondary">{bagsRecommended.toLocaleString()} Sak</span>
+                  <div className="flex justify-between items-center pt-4 bg-white/60 p-4 rounded-xl border border-white mt-4 shadow-sm">
+                    <span className="text-lg font-bold text-primary">Rekomendasi Pembelian:</span>
+                    <span className="text-3xl font-black text-secondary drop-shadow-sm">{bagsRecommended.toLocaleString()} Sak</span>
                   </div>
-                  <p className="text-right text-xs text-primary/50 mt-1">* 1 Sak = 30 Kg PalmFeed</p>
+                  <p className="text-right text-xs text-primary/60 mt-2 italic">* 1 Sak = 30 Kg PalmFeed</p>
                 </div>
               </div>
 
-              <button
+              <motion.button
+                whileHover={{ scale: added ? 1 : 1.02 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={handleAddToCart}
                 disabled={added}
-                className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold transition-all duration-300 shadow-md ${
+                className={`w-full flex items-center justify-center gap-3 py-5 rounded-xl font-bold transition-colors duration-300 shadow-lg relative overflow-hidden ${
                   added 
-                  ? "bg-green-600 text-white shadow-lg" 
-                  : "bg-primary text-white hover:bg-accent hover:shadow-xl transform hover:-translate-y-1 hover:scale-[1.02]"
+                  ? "bg-green-500 text-white" 
+                  : "bg-primary text-white hover:bg-secondary"
                 }`}
               >
-                <ShoppingBag className="w-5 h-5" />
-                {added ? "Telah Ditambahkan!" : "Tambahkan Rekomendasi ke Keranjang"}
-              </button>
+                <AnimatePresence mode="wait">
+                  {added ? (
+                    <motion.div
+                      key="added"
+                      initial={{ y: -20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: 20, opacity: 0 }}
+                      className="flex items-center gap-2"
+                    >
+                      <CheckCircle2 className="w-6 h-6" />
+                      <span>Berhasil Ditambahkan!</span>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="add"
+                      initial={{ y: -20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: 20, opacity: 0 }}
+                      className="flex items-center gap-2"
+                    >
+                      <ShoppingBag className="w-6 h-6" />
+                      <span>Masukkan ke Keranjang</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.button>
             </div>
             
           </div>

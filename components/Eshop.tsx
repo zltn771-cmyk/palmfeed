@@ -73,9 +73,21 @@ export default function Eshop() {
                 {product.name}
               </h3>
               
-              <p className="text-secondary font-medium text-lg mb-6">
-                Daun Sawit
-              </p>
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-secondary font-medium text-lg">Pakan Daun Sawit</span>
+                <span className="text-primary/30">•</span>
+                <span className="flex items-center text-[#D4AF37] text-sm">
+                  ★★★★★ <span className="text-primary/60 ml-1">(4.9/5)</span>
+                </span>
+              </div>
+              
+              <div className="bg-primary/5 p-3 rounded-lg mb-6 max-w-sm">
+                <p className="text-sm text-primary/80"><strong>Kandungan Gizi Unggulan:</strong></p>
+                <ul className="text-xs text-primary/70 list-disc list-inside mt-1">
+                  <li>Protein Kasar (PK) 14.5% - 16%</li>
+                  <li>Total Digestible Nutrients (TDN) &gt;68%</li>
+                </ul>
+              </div>
               
               {/* Price Pill */}
               <div className="inline-flex bg-secondary text-white font-bold text-xl md:text-2xl px-6 py-2 rounded-full mb-6 w-max shadow-md">
@@ -109,6 +121,26 @@ export default function Eshop() {
               </div>
             </div>
 
+          </div>
+        </div>
+
+        {/* Mini Testimonial Block */}
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-primary/5 flex gap-4 items-start">
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center font-bold text-primary shrink-0">B</div>
+            <div>
+              <div className="flex text-[#D4AF37] text-xs mb-1">★★★★★</div>
+              <p className="text-sm text-primary/80 italic mb-2">"Sapi saya lahap makannya dan bobot cepat naik. Sangat direkomendasikan!"</p>
+              <p className="text-xs font-bold text-primary">Budi S. - Peternak Seluma</p>
+            </div>
+          </div>
+          <div className="bg-white p-6 rounded-2xl shadow-sm border border-primary/5 flex gap-4 items-start">
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center font-bold text-primary shrink-0">H</div>
+            <div>
+              <div className="flex text-[#D4AF37] text-xs mb-1">★★★★★</div>
+              <p className="text-sm text-primary/80 italic mb-2">"Praktis tidak perlu ngarit tiap sore. Hemat tenaga dan hasil maksimal."</p>
+              <p className="text-xs font-bold text-primary">Heri M. - BUMDes Maju</p>
+            </div>
           </div>
         </div>
 
