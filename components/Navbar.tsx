@@ -32,9 +32,10 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/70 border-b border-black/[0.03] transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+    <>
+      <nav className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl bg-white/70 border-b border-black/[0.03] transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
           
           {/* Left: Brand Logo */}
           <div className="flex-shrink-0 flex items-center">
@@ -108,10 +109,12 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+    </nav>
 
       {/* Mobile Navigation Menu */}
       <div 
-        className={`md:hidden fixed inset-0 top-20 bg-[#F7F5F0] z-[100] transform transition-transform duration-300 ease-in-out ${
+        style={{ backgroundColor: '#F7F5F0' }}
+        className={`md:hidden fixed inset-0 top-20 z-[100] transform transition-transform duration-300 ease-in-out ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -137,6 +140,6 @@ export default function Navbar() {
       </div>
 
       <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-    </nav>
+    </>
   );
 }
