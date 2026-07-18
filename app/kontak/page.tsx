@@ -1,89 +1,79 @@
-import ScrollReveal from "@/components/ScrollReveal";
-import { MapPin, Phone, Mail, Instagram, Facebook } from "lucide-react";
-import Link from "next/link";
+"use client";
 
-export default function Kontak() {
+import { Mail, Phone, MapPin } from "lucide-react";
+
+export default function KontakPage() {
   return (
-    <main className="min-h-screen pt-32 pb-20 bg-[#F7F5F0]">
+    <main className="min-h-screen pt-24 pb-20 bg-[#F7F5F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
         <div className="text-center mb-16">
-          <ScrollReveal>
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-primary mb-6">Hubungi Kami</h1>
-            <p className="text-lg text-primary/80 max-w-2xl mx-auto leading-relaxed">
-              Kami siap melayani kebutuhan pakan ternak Anda. Jangan ragu untuk berkonsultasi atau mengunjungi pusat produksi kami di Bengkulu.
-            </p>
-          </ScrollReveal>
+          <h1 className="font-serif text-5xl font-bold text-primary mb-6">Hubungi Kami</h1>
+          <p className="text-lg text-primary/70 max-w-2xl mx-auto font-sans">
+            Kami siap membantu Anda. Jangan ragu untuk menghubungi tim PalmFeed untuk pertanyaan seputar produk atau kemitraan.
+          </p>
         </div>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          
-          {/* Contact Info & Socials */}
-          <ScrollReveal direction="left">
-            <div className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-primary/5 space-y-12">
-              <div>
-                <h3 className="text-2xl font-bold text-primary mb-6">Informasi Kontak</h3>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center shrink-0">
-                      <MapPin className="w-5 h-5 text-secondary" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-primary mb-1">Pusat Produksi (Bengkulu)</h4>
-                      <p className="text-primary/70 leading-relaxed">Jl. Lintas Barat Sumatera, Kec. Selebar, Kota Bengkulu, Bengkulu 38213</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center shrink-0">
-                      <Phone className="w-5 h-5 text-secondary" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-primary mb-1">Telepon & WhatsApp</h4>
-                      <p className="text-primary/70">+62 812-3456-7890</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center shrink-0">
-                      <Mail className="w-5 h-5 text-secondary" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-primary mb-1">Email Bisnis</h4>
-                      <p className="text-primary/70">halo@palmfeed.id</p>
-                    </div>
-                  </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          {/* Contact Info */}
+          <div className="flex flex-col gap-8">
+            <div className="bg-white/70 backdrop-blur-xl border border-black/[0.03] p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-secondary/10 p-4 rounded-full text-secondary">
+                  <Phone className="w-6 h-6" />
                 </div>
-              </div>
-
-              <div>
-                <h3 className="text-xl font-bold text-primary mb-4">Sosial Media Kami</h3>
-                <div className="flex gap-4">
-                  <Link href="#" className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
-                    <Instagram className="w-5 h-5" />
-                  </Link>
-                  <Link href="#" className="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center hover:bg-secondary transition-colors">
-                    <Facebook className="w-5 h-5" />
-                  </Link>
+                <div>
+                  <h3 className="font-bold text-xl text-primary">Telepon / WhatsApp</h3>
+                  <p className="text-primary/70">+62 811-0000-0000</p>
                 </div>
               </div>
             </div>
-          </ScrollReveal>
-
-          {/* Map Embed */}
-          <ScrollReveal direction="right">
-            <div className="bg-white p-4 rounded-3xl shadow-sm border border-primary/5 h-[600px] relative overflow-hidden">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127504.43635749219!2d102.19318850684712!3d-3.820251789714399!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e36b01e37dfdb45%3A0x1d141e17d6928da5!2sKota%20Bengkulu%2C%20Bengkulu!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0, borderRadius: '1.5rem' }} 
-                allowFullScreen={true} 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-                className="absolute inset-0 w-full h-full p-4"
-              ></iframe>
+            
+            <div className="bg-white/70 backdrop-blur-xl border border-black/[0.03] p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-secondary/10 p-4 rounded-full text-secondary">
+                  <Mail className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-xl text-primary">Email</h3>
+                  <p className="text-primary/70">halo@palmfeed.id</p>
+                </div>
+              </div>
             </div>
-          </ScrollReveal>
+            
+            <div className="bg-white/70 backdrop-blur-xl border border-black/[0.03] p-8 rounded-3xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-secondary/10 p-4 rounded-full text-secondary">
+                  <MapPin className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-xl text-primary">Kantor Pusat</h3>
+                  <p className="text-primary/70">Jl. Kelapa Sawit No. 1, Jakarta, Indonesia</p>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          {/* Form */}
+          <div className="bg-white/70 backdrop-blur-xl border border-black/[0.03] p-8 md:p-10 rounded-3xl shadow-lg">
+            <h3 className="font-serif text-3xl font-bold text-primary mb-8">Kirim Pesan</h3>
+            <form className="flex flex-col gap-6">
+              <div>
+                <label className="block text-sm font-bold text-primary mb-2">Nama Lengkap</label>
+                <input type="text" className="w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" placeholder="Masukkan nama Anda" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-primary mb-2">Email</label>
+                <input type="email" className="w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all" placeholder="Masukkan email Anda" />
+              </div>
+              <div>
+                <label className="block text-sm font-bold text-primary mb-2">Pesan</label>
+                <textarea rows={4} className="w-full px-5 py-4 rounded-xl bg-white border border-gray-200 focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-all resize-none" placeholder="Tuliskan pesan Anda di sini..."></textarea>
+              </div>
+              <button type="button" className="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg hover:bg-accent transition-all hover:-translate-y-1 shadow-lg hover:shadow-xl mt-2">
+                Kirim Sekarang
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </main>
