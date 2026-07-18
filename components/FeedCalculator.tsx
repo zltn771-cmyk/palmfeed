@@ -21,7 +21,7 @@ export default function FeedCalculator() {
     addToCart({
       id: "palmfeed-30kg",
       name: "PalmFeed 30kg - Pakan Ruminansia Premium",
-      price: 180000,
+      price: 210000,
       quantity: bagsRecommended,
       weightPerItem: 30
     });
