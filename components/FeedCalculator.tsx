@@ -1,36 +1,21 @@
 "use client";
 
 import React, { useState } from "react";
-import { Calculator, ShoppingBag, Info } from "lucide-react";
-import { useCart } from "./CartContext";
+import { Calculator, MessageCircle, Info } from "lucide-react";
+import Link from "next/link";
 
 export default function FeedCalculator() {
   const [livestockCount, setLivestockCount] = useState<number>(10);
   const [bodyWeight, setBodyWeight] = useState<number>(300);
   const [durationDays, setDurationDays] = useState<number>(30);
-  const [added, setAdded] = useState(false);
-
-  const { addToCart } = useCart();
 
   // Formula Calculations
   const dailyFeedPerHead = bodyWeight * 0.02; // 2% of body weight
   const totalNeededKg = livestockCount * dailyFeedPerHead * durationDays;
   const bagsRecommended = Math.ceil(totalNeededKg / 30); // 30kg per bag
 
-  const handleAddToCart = () => {
-    addToCart({
-      id: "palmfeed-30kg",
-      name: "PalmFeed 30kg - Pakan Ruminansia Premium",
-      price: 210000,
-      quantity: bagsRecommended,
-      weightPerItem: 30
-    });
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
-  };
-
   return (
-    <section id="calculator" className="py-24 relative z-10">
+    <section id="calculator" className="py-24 relative z-10 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-primary mb-4">
@@ -41,7 +26,7 @@ export default function FeedCalculator() {
           </p>
         </div>
 
-        <div className="bg-white/70 backdrop-blur-xl border border-black/[0.03] rounded-[2.5rem] shadow-xl p-6 md:p-12 relative overflow-hidden transition-all duration-500 hover:shadow-2xl">
+        <div className="bg-[#F7F5F0] rounded-[2.5rem] shadow-sm border border-primary/5 p-6 md:p-12 relative overflow-hidden transition-all duration-500 hover:shadow-md">
           {/* Decorative faint icon */}
           <Calculator className="absolute -bottom-10 -right-10 w-64 h-64 text-secondary/5 -z-0" />
 
@@ -91,18 +76,18 @@ export default function FeedCalculator() {
             </div>
 
             {/* Results Column */}
-            <div className="bg-primary/5 rounded-2xl p-6 md:p-8 flex flex-col justify-between h-full border border-primary/10">
+            <div className="bg-white rounded-2xl p-6 md:p-8 flex flex-col justify-between h-full border border-primary/10 shadow-sm">
               <div>
                 <h3 className="text-xl font-bold text-primary mb-6">
                   Hasil Kalkulasi
                 </h3>
                 
                 <div className="space-y-4 mb-8">
-                  <div className="flex justify-between items-center border-b border-primary/10 pb-3">
+                  <div className="flex justify-between items-center border-b border-primary/5 pb-3">
                     <span className="text-primary/70">Kebutuhan per Ekor/Hari:</span>
                     <span className="font-semibold text-primary">{dailyFeedPerHead.toFixed(1)} Kg</span>
                   </div>
-                  <div className="flex justify-between items-center border-b border-primary/10 pb-3">
+                  <div className="flex justify-between items-center border-b border-primary/5 pb-3">
                     <span className="text-primary/70">Total Kebutuhan (Kg):</span>
                     <span className="font-semibold text-primary">{totalNeededKg.toLocaleString()} Kg</span>
                   </div>
@@ -114,18 +99,15 @@ export default function FeedCalculator() {
                 </div>
               </div>
 
-              <button
-                onClick={handleAddToCart}
-                disabled={added}
-                className={`w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold transition-all duration-300 shadow-md ${
-                  added 
-                  ? "bg-green-600 text-white shadow-lg" 
-                  : "bg-primary text-white hover:bg-accent hover:shadow-xl transform hover:-translate-y-1 hover:scale-[1.02]"
-                }`}
+              <Link
+                href={`https://wa.me/6281234567890?text=Halo%20PalmFeed,%20saya%20sudah%20menghitung%20kebutuhan%20pakan%20sapi%20saya.%20Saya%20membutuhkan%20sekitar%20${bagsRecommended}%20sak%20PalmFeed.%20Mohon%20info%20lebih%20lanjut.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-bold transition-all duration-300 shadow-md bg-secondary text-white hover:bg-secondary/90 hover:shadow-xl transform hover:-translate-y-1 hover:scale-[1.02]"
               >
-                <ShoppingBag className="w-5 h-5" />
-                {added ? "Telah Ditambahkan!" : "Tambahkan Rekomendasi ke Keranjang"}
-              </button>
+                <MessageCircle className="w-5 h-5" />
+                Pesan via WhatsApp
+              </Link>
             </div>
             
           </div>

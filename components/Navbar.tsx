@@ -2,15 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ShoppingCart, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useCart } from "./CartContext";
-import CartDrawer from "./CartDrawer";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-  const { cartCount } = useCart();
 
   useEffect(() => {
     if (isMobileMenuOpen) {
@@ -26,8 +22,9 @@ export default function Navbar() {
   const navLinks = [
     { name: "Beranda", href: "/" },
     { name: "Tentang Kami", href: "/tentang" },
-    { name: "Kalkulator Pakan", href: "/kalkulator" },
-    { name: "E-Shop", href: "/shop" },
+    { name: "Produk", href: "/produk" },
+    { name: "Kemitraan", href: "/kemitraan" },
+    { name: "Edukasi", href: "/edukasi" },
     { name: "Kontak", href: "/kontak" },
   ];
 
@@ -39,8 +36,7 @@ export default function Navbar() {
           
           {/* Left: Brand Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link href="/" className="font-serif text-2xl font-bold text-primary tracking-tight">
-              {/* If user drops logo.png in public/images/ it will load here */}
+            <Link href="/" className="font-serif text-2xl font-bold text-primary tracking-tight flex items-center gap-2">
               <div className="relative h-10 w-32 hidden sm:block">
                 <Image 
                   src="/images/logo.jpg" 
@@ -55,7 +51,7 @@ export default function Navbar() {
           </div>
 
           {/* Center: Desktop Navigation Links */}
-          <div className="hidden md:flex flex-1 justify-center items-center space-x-8">
+          <div className="hidden md:flex flex-1 justify-center items-center space-x-6 lg:space-x-8">
             {navLinks.map((link) => (
               <Link 
                 key={link.name} 
@@ -68,37 +64,19 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Right: Cart & CTA */}
+          {/* Right: CTA */}
           <div className="hidden md:flex items-center space-x-6">
-            <button onClick={() => setIsCartOpen(true)} className="relative text-primary hover:text-secondary transition-colors focus:outline-none">
-              <ShoppingCart className="w-6 h-6" />
-              {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-secondary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </button>
             <Link 
-              href="/kontak" 
+              href="https://wa.me/6281234567890?text=Halo%20PalmFeed,%20saya%20tertarik%20untuk%20berkonsultasi%20tentang%20pakan%20sapi" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-primary text-white px-6 py-2.5 rounded-full font-medium hover:bg-accent transition-all duration-300 shadow-md hover:shadow-xl transform hover:-translate-y-1 hover:scale-[1.02]"
             >
-              Hubungi Kami
+              Konsultasi Sales
             </Link>
           </div>
 
           <div className="md:hidden flex items-center">
-            <button 
-              onClick={() => setIsCartOpen(true)} 
-              className="relative text-primary mr-2 focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center"
-              aria-label="Keranjang"
-            >
-              <ShoppingCart className="w-6 h-6" />
-              {cartCount > 0 && (
-                <span className="absolute top-0 right-0 bg-secondary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">
-                  {cartCount}
-                </span>
-              )}
-            </button>
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-primary focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center"
@@ -130,16 +108,16 @@ export default function Navbar() {
             </Link>
           ))}
           <Link 
-            href="/kontak"
+            href="https://wa.me/6281234567890?text=Halo%20PalmFeed,%20saya%20tertarik%20untuk%20berkonsultasi%20tentang%20pakan%20sapi"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setIsMobileMenuOpen(false)}
             className="bg-primary text-white text-center py-3 rounded-xl font-medium mt-4 shadow-md hover:-translate-y-1 transition-transform duration-300"
           >
-            Hubungi Kami
+            Konsultasi Sales
           </Link>
         </div>
       </div>
-
-      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   );
 }
