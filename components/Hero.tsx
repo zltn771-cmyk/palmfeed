@@ -1,110 +1,86 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { Leaf } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function Hero() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
   return (
-    <section ref={containerRef} id="home" className="relative w-full h-screen min-h-[900px] flex items-center bg-[#F7F5F0] overflow-hidden">
+    <section id="home" className="relative w-full h-screen min-h-[800px] flex items-center justify-center overflow-hidden z-10 bg-black">
       
-      {/* Background Marquee Text */}
-      <div className="absolute top-1/4 left-0 w-full overflow-hidden opacity-5 pointer-events-none z-0 rotate-[-2deg] scale-110">
-        <div className="whitespace-nowrap flex font-editorial text-[15rem] font-bold tracking-tighter uppercase animate-marquee">
-          <span className="mx-8">MASA DEPAN PETERNAKAN ORGANIK</span>
-          <span className="mx-8">MASA DEPAN PETERNAKAN ORGANIK</span>
-        </div>
-      </div>
+      {/* Background Image with Parallax-like effect */}
+      <motion.div 
+        className="absolute inset-0 z-0"
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+      >
+        <Image 
+          src="/images/hero_concept_2.png" 
+          alt="Modern Agritech PalmFeed" 
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-80"
+        />
+        {/* Cinematic gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A140B] via-transparent to-[#0A140B]/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A140B]/90 via-black/40 to-transparent"></div>
+      </motion.div>
 
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 w-full h-full flex flex-col justify-center relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
-        {/* Editorial Layout Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full pt-20">
+        {/* Typography & CTAs (Left Aligned for cinematic feel) */}
+        <div className="flex flex-col items-start text-left mt-16 lg:mt-0">
+          <ScrollReveal direction="up" delay={0.2}>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 w-max mb-6 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+              <Leaf className="w-4 h-4 text-[#D4AF37]" />
+              <span className="text-sm font-semibold tracking-wide uppercase text-white/90">Masa Depan Peternakan</span>
+            </div>
+          </ScrollReveal>
           
-          {/* Left: Huge Typography (Spans 7 cols) */}
-          <div className="lg:col-span-7 relative z-20 flex flex-col justify-center mix-blend-difference text-[#F7F5F0]">
-            <ScrollReveal type="mask" delay={0.2} duration={1.2}>
-              <div className="flex items-center gap-4 mb-6">
-                <div className="h-[1px] w-12 bg-current"></div>
-                <span className="font-sans uppercase tracking-[0.3em] text-xs font-semibold">PalmFeed Premium</span>
-              </div>
-            </ScrollReveal>
+          <ScrollReveal direction="up" delay={0.4}>
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-[5.5rem] font-bold text-white leading-[1.05] mb-6 drop-shadow-2xl">
+              Kemewahan <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F3E5AB]">Nutrisi Alami.</span>
+            </h1>
+          </ScrollReveal>
+          
+          <ScrollReveal direction="up" delay={0.6}>
+            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-xl font-sans leading-relaxed drop-shadow-md">
+              Formulasi eksklusif pakan ternak dari limbah daun sawit organik. Dirancang untuk hasil maksimal dengan standar agrikultur berteknologi tinggi.
+            </p>
+          </ScrollReveal>
 
-            <ScrollReveal type="mask" delay={0.4} duration={1.2}>
-              <h1 className="font-editorial text-[5rem] sm:text-[7rem] lg:text-[8.5rem] leading-[0.85] font-black uppercase tracking-tighter mix-blend-exclusion text-[#F7F5F0]">
-                Evolusi <br />
-                <span className="italic font-serif text-[#D4AF37] opacity-90 font-light text-[6rem] sm:text-[8rem] lg:text-[10rem]">Nutrisi</span>
-              </h1>
-            </ScrollReveal>
-
-            <ScrollReveal direction="up" delay={0.8} duration={1}>
-              <p className="mt-10 font-sans text-lg sm:text-xl md:max-w-md font-light leading-relaxed mix-blend-exclusion text-[#F7F5F0]/80">
-                Memadukan kemurnian limbah daun sawit dengan sains peternakan modern. Sebuah mahakarya pakan organik untuk hasil yang tidak tertandingi.
-              </p>
-            </ScrollReveal>
-
-            <ScrollReveal direction="up" delay={1} duration={1}>
-              <div className="flex flex-col sm:flex-row gap-6 mt-12 mix-blend-exclusion">
-                <Link 
-                  href="/shop" 
-                  className="group relative inline-flex items-center justify-center px-8 py-4 font-sans font-bold uppercase tracking-widest text-xs bg-white text-black overflow-hidden"
-                >
-                  <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
-                  <span className="relative z-10 flex items-center gap-3">
-                    Beli Sekarang
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
-                  </span>
-                  <div className="absolute inset-0 h-full w-full bg-[#D4AF37] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500 ease-out z-0"></div>
-                </Link>
-                
-                <Link 
-                  href="/tentang" 
-                  className="group inline-flex items-center justify-center px-8 py-4 font-sans font-bold uppercase tracking-widest text-xs border border-white text-white hover:bg-white hover:text-black transition-colors duration-500"
-                >
-                  Pelajari Formulasi
-                </Link>
-              </div>
-            </ScrollReveal>
-          </div>
-
-          {/* Right: Editorial Image (Spans 5 cols) */}
-          <div className="lg:col-span-5 relative h-full min-h-[500px] lg:min-h-0 flex items-center justify-center lg:justify-end z-10">
-            <ScrollReveal type="scale" delay={0.2} className="w-full h-[70vh] lg:h-[85vh] relative max-w-md ml-auto">
-              {/* Parallax Container */}
-              <motion.div style={{ y, opacity }} className="w-full h-full relative overflow-hidden">
-                <Image 
-                  src="/images/hero_concept_2_final.png" 
-                  alt="PalmFeed Concept" 
-                  fill
-                  className="object-cover object-center grayscale hover:grayscale-0 transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] scale-105"
-                  priority
-                  quality={100}
-                />
-                {/* Vintage overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1E3F20]/40 to-transparent mix-blend-multiply"></div>
-              </motion.div>
-
-              {/* Vertical floating text indicator */}
-              <div className="absolute -left-12 top-1/2 -translate-y-1/2 -rotate-90 hidden xl:flex items-center gap-4">
-                <span className="text-[10px] font-sans font-bold uppercase tracking-[0.4em] text-[#1E3F20]">Gulir Ke Bawah</span>
-                <div className="w-12 h-[1px] bg-[#1E3F20]"></div>
-              </div>
-            </ScrollReveal>
-          </div>
-
+          <ScrollReveal direction="up" delay={0.8}>
+            <div className="flex flex-wrap items-center gap-4">
+              <Link 
+                href="/shop"
+                className="group relative px-8 py-4 rounded-full font-bold overflow-hidden transition-all shadow-2xl"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-[#a68a35] to-[#8c742c] transition-transform duration-500 group-hover:scale-105"></div>
+                <span className="relative z-10 text-white flex items-center gap-2">
+                  Pesan Sekarang
+                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </span>
+              </Link>
+              <Link 
+                href="/tentang"
+                className="px-8 py-4 rounded-full font-bold transition-all text-white border border-white/30 backdrop-blur-md hover:bg-white/10 hover:border-white/60"
+              >
+                Pelajari Prosesnya
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
+
+        {/* Right side is intentionally empty to let the beautiful background (the glowing pedestal and bag) shine through */}
+        <div className="hidden lg:block w-full h-full"></div>
+
       </div>
     </section>
   );

@@ -16,18 +16,7 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         serif: ['"Playfair Display"', 'serif'],
-        display: ['"Oswald"', 'sans-serif'],
-        editorial: ['"Cinzel"', 'serif'],
       },
-      animation: {
-        'marquee': 'marquee 25s linear infinite',
-      },
-      keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-100%)' },
-        }
-      }
     },
   },
   plugins: [],
